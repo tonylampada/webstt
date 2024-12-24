@@ -5,7 +5,8 @@ import uuid
 from pydub import AudioSegment
 
 # Load the model once at module level
-model = whisper.load_model("base")
+model_name = os.getenv("WHISPER_MODEL", "turbo")
+model = whisper.load_model(model_name)
 
 def transcribe(base64_audio):
     # Generate a random filename
